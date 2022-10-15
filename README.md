@@ -12,5 +12,7 @@ Keeping with the standards of the class, this code should be built and run on a 
 To build the CLI, run `gcc -pthread -o chat chat.c nic_app.c -lpigpiod_if2` in the `src` directory.
 To run the CLI, then call `./chat`.
 
+Note: in order to make network calls, the router from [nic_net](https://github.com/Jessicat-H/nic_net) must be running on the computer you wish to run the application on.
+
 ## Authors
 The following code was written by [Jessica Hannebert](https://github.com/Jessicat-H), [Dylan Chapell](https://github.com/dylanchapell), and [Tony Mastromarino](https://github.com/tonydoesathing).
