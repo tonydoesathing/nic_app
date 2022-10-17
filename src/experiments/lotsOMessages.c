@@ -48,9 +48,11 @@ int main(int argc, char **argv)
             printf("Sending message %d of %d\n", i, howMany);
         }
         send_message(destID, APP_ID, testMessage, strlen(testMessage) + 1);
+        sleep(1);
     }
     while (1)
     {
+        sleep(10);
         printf("Recieved %d good and %d bad\n", GoodMsgRcvd, BadMsgRcvd);
     }
     return 0;
