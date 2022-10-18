@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include "nic_app.h"
 #define APP_ID 4
 
@@ -43,13 +44,13 @@ int main(int argc, char **argv)
     nic_app_init(APP_ID, receiveMessage);
     // get user input
     int i = 0;
-    if (role = 's')
+    if (role == 's')
     {
         while (1)
         {
             if (i % 10 == 0)
             {
-                printf("Sending message %d of %d\n", i, howMany);
+                printf("Sending message %d\n", i);
             }
             send_message(destID, APP_ID, testMessage, strlen(testMessage) + 1);
             usleep(500000);
