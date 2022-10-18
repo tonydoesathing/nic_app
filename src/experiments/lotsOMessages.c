@@ -30,25 +30,32 @@ void receiveMessage(uint8_t *message)
  */
 int main(int argc, char **argv)
 {
-    if (argc < 2)
+    if (argc != 3)
     {
-        printf("Usage: ./lotsOMessages <Destiniation ID>\n");
+        printf("Usage: ./lotsOMessages <Destiniation ID> <role (s/r)>\n");
         return (1);
     }
     int destID = atoi(argv[1]);
 
+    char role = argv[2][0];
+
     // init nic_app
     nic_app_init(APP_ID, receiveMessage);
     // get user input
-    int howMany = 50;
-    for (int i = 1; i <= howMany; i++)
+    int i = 0;
+    if (role = 's')
     {
-        if (i % 10 == 0)
+        while (1)
         {
-            printf("Sending message %d of %d\n", i, howMany);
+            if (i % 10 == 0)
+            {
+                printf("Sending message %d of %d\n", i, howMany);
+            }
+            send_message(destID, APP_ID, testMessage, strlen(testMessage) + 1);
+            usleep(500000);
+            //sleep(1);
+            i++;
         }
-        send_message(destID, APP_ID, testMessage, strlen(testMessage) + 1);
-        sleep(1);
     }
     while (1)
     {

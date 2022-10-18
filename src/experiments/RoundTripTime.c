@@ -20,7 +20,7 @@ void receiveMessage(uint8_t *message)
         struct timespec time;
         clock_gettime(CLOCK_BOOTTIME, &time);
         int elapsedMs = (time.tv_sec-startSecs)*1000 + (time.tv_nsec-startNSecs)/1000000;
-        printf("Hops: %d RTT: %d\n",message[2],elapsedMs);
+        printf("Hops: %d RTT: %dms\n",message[2],elapsedMs);
     }
 }
 /**
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
             clock_gettime(CLOCK_BOOTTIME, &time);
             startSecs = time.tv_sec;
             startNSecs = time.tv_nsec;
-            uint8_t msg[1] = '\0';
+            uint8_t msg[1] = {'\0'};
             send_message(destID,APP_ID,msg,1);
             sleep(10);
         }
